@@ -8,7 +8,8 @@ test.describe('Example page tests', () => {
     });
 
     test('Check for specific text on the page', async ({ page }) => {
-        await page.goto('/example-page');
+        await page.goto('/');
+        // Goes to the baseURL set in playwright.config.js
         const content = await page.textContent('body');
         expect(content).toContain('This is an example page');
     });
