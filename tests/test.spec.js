@@ -5,4 +5,11 @@ const { test, expect } = require('@playwright/test');
 test.describe('Example page tests', () => {
     test('Check URL and title', async ({ page }) => {
         await page.goto('/example-page');
+    });
+
+    test('Check for specific text on the page', async ({ page }) => {
+        await page.goto('/example-page');
+        const content = await page.textContent('body');
+        expect(content).toContain('This is an example page');
+    });
 });
