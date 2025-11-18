@@ -31,7 +31,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    baseURL: 'https://example.com',
+    baseURL: 'https://sauce-demo.myshopify.com/',
     // Setting base URL for ease, and to show it's uses
   },
 
