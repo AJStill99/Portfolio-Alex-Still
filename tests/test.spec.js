@@ -5,26 +5,18 @@ const { expect } = require('@playwright/test'); // Import expect for assertions
 
 test.describe('Example page tests', () => {
     test('Check URL and title', async ({ page }) => {
-        await page.goto('/example-domains');
-        await expect(page).toHaveURL('https://example.com/example-domains');
-        await expect(page).toHaveTitle('Example Domains');
+        await page.goto('/');
+        await expect(page).toHaveURL('https://sauce-demo.myshopify.com/');
+        await expect(page).toHaveTitle('Sauce Demo');
         // Is there a way to make this dynamic rather than hardcoding?
     });
 
-    test('Check for heading text on the page', async ({ page, logToConsole }) => {
-        await page.goto('/');
-        // Goes to the baseURL set in playwright.config.js
-        // Can go to specific paths like '/example-page' as well
-    });
-
     test('Check if heading text is correct', async ({ page }) => {
-        page.goto('/');
-        const headerText = await page.textContent('h1');
-        if(headerText !== 'Example Domains') {
-            throw new Error(`Expected header text to be 'Example Domains' but got '${headerText}'`);
-        }
-
-        await expect(headerText).toBe('Example Domains');
+        await page.goto('/');
+        const heading = page.locator('h1');
+        await expect(heading).toHaveText('simple.');
+        // This will fail, as the h1 element is actually an image on the page
+        // # TODO - change to check for an image, and check it's alt text maybe? 
     });
 
     test('Navigate from home to a product page', async ({ page }) => {
@@ -33,6 +25,4 @@ test.describe('Example page tests', () => {
         await page.click('a[href="/collections/all"]');
         await expect(page).toHaveURL(/\/collections\/all/);
     });
-
-    // this keeps fucking failing and no idea why, pissing me off 
 });
