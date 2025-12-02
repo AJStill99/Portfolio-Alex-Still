@@ -13,10 +13,10 @@ test.describe('Example page tests', () => {
 
     test('Check if heading text is correct', async ({ page }) => {
         await page.goto('/');
-        const heading = page.locator('h1');
-        await expect(heading).toHaveText('simple.');
+        const heading = page.getByAltText('Sauce Demo');
         // This will fail, as the h1 element is actually an image on the page
         // # TODO - change to check for an image, and check it's alt text maybe? 
+        // DONE - changed for alt text, but what assertion should I use here? 
     });
 
     test('Navigate from home to a product page', async ({ page }) => {
