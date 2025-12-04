@@ -7,6 +7,7 @@ const test = base.extend({
         await use();
         console.log('Test finished.');
     },
+    // Logs to the console before and after each test -- similar to how a beforeEach and afterEach would work
 });
 
 module.exports = { test };
