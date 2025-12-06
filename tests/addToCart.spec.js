@@ -24,5 +24,6 @@ test.describe('Checking the add to cart functionality', () => {
         const cartCount = page.locator('#cart-target-desktop');
         await cartCount.waitFor(); // Wait for the cart count to update
         await expect(cartCount).toHaveText(/1/); // Sub string check for 1 item in cart
+        // Done this as string contains brackets, rather focus on the number itself
     });
 });
