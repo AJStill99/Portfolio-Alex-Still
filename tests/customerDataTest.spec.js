@@ -13,5 +13,7 @@ test.describe('Filling in customer data during checkout', () => {
         await page.locator('.checkout').click();
 
         await fillCustomerDetails(page, customerData.validUser);
+
+        // TODO : Change this to bypass dodgy animation by clicking check out next to my cart instead
     });
 });
