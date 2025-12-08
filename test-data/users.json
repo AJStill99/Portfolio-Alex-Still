@@ -1,0 +1,14 @@
+{
+  "standard_user": {
+    "id": 1,
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "role": "customer"
+  },
+  "locked_out_user": {
+    "id": 2,
+    "username": "locked_out_user",
+    "password": "secret_sauce",
+    "role": "customer"
+  }
+}

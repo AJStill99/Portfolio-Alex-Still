@@ -1,5 +1,8 @@
 const { test: base } = require('@playwright/test');
 
+const users = require('./test-data/users.json');
+const products = require('./test-data/products.json');
+
 const test = base.extend({
     // Define fixtures here if needed
     logToConsole: async ({}, use) => {
@@ -8,6 +11,9 @@ const test = base.extend({
         console.log('Test finished.');
     },
     // Logs to the console before and after each test -- similar to how a beforeEach and afterEach would work
+    testData: async ({}, use) => {
+        await use({ users, products });
+    }
 });
 
 module.exports = { test };
