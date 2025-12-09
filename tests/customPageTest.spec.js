@@ -10,7 +10,7 @@ test.describe('Running tests on custom HTML page written by myself with some CSS
         await expect(page.title()).toBe('Test Document');
     });
 
-    test(.skip'Check for heading text on the page', async ({ page }) => {
+    test.skip('Check for heading text on the page', async ({ page }) => {
         await page.goto('http://127.0.0.1:5500/index.html');
         // Goes to the local HTML file
         const headerText = await page.textContent('h1');
