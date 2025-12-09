@@ -4,12 +4,22 @@
     - e.g. going to the base URL, or going to a specific page by URL extension
 */
 
+const users = require('./test-data/users.json');
+const products = require('./test-data/products.json');
+const checkoutInfo = require('./test-data/checkout.json');
+const errors = require('./test-data/errors.json');
+
 async function goToBaseURL(page) { 
     await page.goto('/');
 }
 
 async function goTo(page, URL_extension) {
     await page.goto(`/${URL_extension}`);
+}
+
+async function clickProduct(page, productName) {
+    const productName = products[productName].name;
+    await page.locator(`text=${productName}`).click();
 }
 
 async function clickProduct(page, productName) {
@@ -20,13 +30,17 @@ async function goToCart(page) {
   await page.locator('#cart-target-desktop').click();
 }
 
-async function fillCustomerDetails(page, data) {
-  await page.fill('#checkout_email', data.email);
-  await page.fill('#checkout_shipping_address_first_name', data.firstName);
-  await page.fill('#checkout_shipping_address_last_name', data.lastName);
-  await page.fill('#checkout_shipping_address_address1', data.address1);
-  await page.fill('#checkout_shipping_address_city', data.city);
-  await page.fill('#checkout_shipping_address_zip', data.zip);
+async function fillCustomerDetails(page, userKey = 'standard_user_checkout') {
+    // Default to standard_user_checkout if no userKey is provided
+    // Makes this function more fullproof
+    const data = checkoutInfo[userKey].shipping;
+
+    await page.fill('#checkout_email', data.email);
+    await page.fill('#checkout_shipping_address_first_name', data.firstName);
+    await page.fill('#checkout_shipping_address_last_name', data.lastName);
+    await page.fill('#checkout_shipping_address_address1', data.address1);
+    await page.fill('#checkout_shipping_address_city', data.city);
+    await page.fill('#checkout_shipping_address_zip', data.zip);
 }
 
 async function checkPageTitle(expectedTitle) {
@@ -43,11 +57,15 @@ async function getElement(page, elementID) {
     await page.locator(elementID);
 }
 
-async function loginPage(page, userEmailLocator, userEmail, userPasswordLocator, userPassword, loginButton, url) {
-    goToURL(url);
-    await page.locator(userEmailLocator).fill(userEmail);
-    await page.locator(userPasswordLocator).fill(userPassword);
-    await page.locator(loginButton).click(middle);
+async function loginPage(page, userKey = 'standard_user') {
+    // Default to standard_user_checkout if no userKey is provided
+    // Makes this function more fullproof
+    const user = users[userKey];
+
+    await page.goto('/login');
+    await page.fill('#user-name', user.username);
+    await page.fill('#password', user.password);
+    await page.click('#login-button');
 }
 
 async function checkForSuccessElement(page, successElement, failureElement) {

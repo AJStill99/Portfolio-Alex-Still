@@ -4,12 +4,30 @@
     "items": [
       { "product": "black_heels", "qty": 1 },
       { "product": "white_sandals", "qty": 2 }
-    ]
+    ],
+    "shipping": {
+      "email": "example@example.com",
+      "firstName": "Alex",
+      "lastName": "Still",
+      "address": "123 Main St",
+      "city": "Anytown",
+      "postalCode": "12345",
+      "zipCode": "12345"
+    }
   },
   "locked_out_user_checkout": {
     "user": "locked_out_user",
     "items": [
       { "product": "bronze_sandals", "qty": 1 }
-    ]
+    ],
+    "shipping": {
+      "email": "locked@example.com",
+      "firstName": "Locked",
+      "lastName": "User",
+      "address": "456 Side St",
+      "city": "Othertown",
+      "postalCode": "67890",
+      "zipCode": "67890"
+    }
   }
 }
