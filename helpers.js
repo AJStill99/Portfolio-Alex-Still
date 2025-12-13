@@ -18,12 +18,8 @@ async function goTo(page, URL_extension) {
 }
 
 async function clickProduct(page, productName) {
-    const productName = products[productName].name;
-    await page.locator(`text=${productName}`).click();
-}
-
-async function clickProduct(page, productName) {
-  await page.locator(`text=${productName}`).click();
+    const product = products[productName].name;
+    await page.locator(`text=${product}`).click();
 }
 
 async function goToCart(page) {
