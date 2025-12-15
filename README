@@ -5,7 +5,19 @@ This project demonstrates the capabilities of Playwright in performing end-to-en
 - Responsive design testing
 - Performance testing
 
-I will use one of my own websites I created for this project, using a simple HTML/CSS/JS stack, hosted on GitHub Pages.
+In preparation, I have created some test data; including users, checkout data, errors, and products. This is in an aid to make the code more manageable to simulate real tests a little better. 
+
+YML File - Only runs on main currently, but opens a brand new machine, installs what needs to be installed and runs whenever I push to main or on a pull request.
+
+I will use one of my own websites I created for this project, using a simple HTML/CSS/JS stack, which will eventually be hosted somewhere (maybe GitHub pages)
+
+Tests used here: 
+- Auth
+- Cart
+- Checkout + Checkout-validation (failing case)
+- Navigation
+- Products
+- Smoke
 
 URLs:
 - https://example.com
