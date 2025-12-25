@@ -20,4 +20,11 @@ Tests used here:
 - Smoke
 
 URLs:
-- https://example.com
+- baseURL: https://sauce-demo.myshopify.com/
+
+Documentation: 
+
+- [Test Strategy](docs/test-strategy.md)
+- [Exploratory Test Report](docs/exploratory-testing-report.md)
+
+
