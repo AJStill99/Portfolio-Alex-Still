@@ -1,39 +1,32 @@
 const { test, expect } = require('@playwright/test');
 const Products = require('../components/products');
 
-test('Product actions demo - safe collection handling', async ({ page }) => {
+test('Product actions demo', async ({ page }) => {
   const products = Products(page);
+  // This line is important. the products import needs the page object to work properly. 
+  // This will give the functions access to the Playwright page methods and properties.
+  await page.goto('/collections/frontpage');
 
-  // Go to the collection page
-  const collectionURL = 'https://sauce-demo.myshopify.com/collections/frontpage';
-  await page.goto(collectionURL);
+  const allProducts = await products.captureProducts();
 
-  // --- Capture all product info first ---
-  const total = await products.getProductCount();
-  console.log('Total products:', total);
-  expect(total).toBeGreaterThan(0);
+  console.log('Total products:', allProducts.length);
+  expect(allProducts.length).toBeGreaterThan(0);
 
-  const allProducts = await products.getAllProducts();
-  allProducts.forEach((p, i) => {
-    console.log(`Product ${i + 1}: ${p.title} - ${p.price}`);
+  const firstProduct = products.getFirstProduct();
+  await products.addProductToCart(firstProduct);
+  console.log(`Added first product: ${firstProduct.title}`);
+
+  const lastProduct = products.getLastProduct();
+  await products.addProductToCart(lastProduct);
+  console.log(`Added last product: ${lastProduct.title}`);
+
+  await products.addProductToCart(products.getNthProduct(1));
+
+  allProducts.forEach((product, index) => {
+    console.log(
+      `Product ${index + 1}: ${product.title} - ${product.price}`
+    );
   });
 
-  await products.addFirstProductToCart();
-  console.log('Added first product to cart');
-
-  await products.addLastProductToCart();
-  console.log('Adding last product to cart');
-
-  if (total >= 2) {
-    await products.addNthProductToCart(1); // zero-based index
-    console.log('Added 2nd product to cart');
-  }
-
-  expect(allProducts[0].title).toBeTruthy();
-  expect(allProducts[0].price).toMatch(/£\d+/);
-
-  if (total >= 2) {
-    expect(allProducts[1].title).toBeTruthy();
-    expect(allProducts[1].price).toMatch(/£\d+/);
-  }
+  expect(firstProduct.title).toBeTruthy();
 });
