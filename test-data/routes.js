@@ -1,7 +1,7 @@
 module.exports = {
-  HOME: '',
-  PRODUCTS: 'products',
-  CART: 'cart',
-  CHECKOUT: 'checkout',
-  ACCOUNT_LOGIN: 'account/login',
+  home: '',
+  products: 'products',
+  cart: 'cart',
+  checkout: 'checkout',
+  account_login: 'account/login',
 };
