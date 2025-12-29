@@ -6,13 +6,18 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+  "node": ">=18"
+  },
   "devDependencies": {
-    "@playwright/test": "^1.56.1",
-    "@types/node": "^24.10.0"
+    "@playwright/test": "1.56.1",
+    "@types/node": "24.10.0"
   },
   "scripts": {
     "test": "playwright test",
+    "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
-    "test:debug": "playwright test --debug"
+    "test:debug": "playwright test --debug",
+    "test:ci": "playwright test --reporter=html"
   }
 }
