@@ -22,9 +22,9 @@ test.describe('Checking the authentication functionality', () => {
     test.skip('Login with invalid credentials', async ({ page }) => {
         await loginPage(page, 'invalid_user');
         const errorMessage = page.locator('.errors li');
-        // BUG - This locator is wrong, need to fix at some point
+        // BUG - This element is not on the DOM after failed login attempt, not sure how to handle this yet
         await expect(errorMessage).toHaveText(/Invalid email or password/);
-        // Above line will fail as error message is not on the DOM - need to find a way to check for this
+        // Above line will fail as error message text box, which is not on the DOM - need to find a way to check for this
     });
 
     test.skip('Logout after login', async ({ page }) => {
