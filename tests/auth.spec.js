@@ -24,8 +24,7 @@ test.describe('Checking the authentication functionality', () => {
         const errorMessage = page.locator('.errors li');
         // BUG - This locator is wrong, need to fix at some point
         await expect(errorMessage).toHaveText(/Invalid email or password/);
-        // Site appears to have no valid credientials for login
-        // This will pass as there I have not added a proper assertion yet, set to skip for now until I can fix
+        // Above line will fail as error message is not on the DOM - need to find a way to check for this
     });
 
     test.skip('Logout after login', async ({ page }) => {
