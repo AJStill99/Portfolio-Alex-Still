@@ -21,12 +21,13 @@ module.exports = (page) => {
           price: await card.locator('h4').textContent(),
           href: await card.getAttribute('href'),
         });
+
+        // For loop captures product by index, and pushes to cachedProducts array
       }
 
       return cachedProducts;
     },
 
-    // 2️⃣ Pure data access (NO Playwright here)
     getFirstProduct() {
       return cachedProducts[0];
     },
@@ -42,10 +43,13 @@ module.exports = (page) => {
       return cachedProducts[n];
     },
 
-    // 3️⃣ Navigation + add to cart
     async addProductToCart(product) {
       await page.goto(`https://sauce-demo.myshopify.com${product.href}`);
       await addToCart();
+    },
+
+    async consoleLogProducts() {
+      console.log(cachedProducts);
     },
   };
 };

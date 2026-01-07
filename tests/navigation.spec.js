@@ -14,10 +14,11 @@ test.describe('Navigation tests', () => {
         await page.goto(routes.cart);
   });
 
-    test('Navigate to Checkout page', async ({ page }) => {
+    test.skip('Navigate to Checkout page', async ({ page }) => {
         await page.goto(routes.checkout);
         // await expect(page).toHaveURL(/checkout/);
         // For some reason, navigating to checkout redirects back to home page. Maybe because cart is empty?
+        // Unsure why this is passing as well. Will skip for now - Got around this checkout.spec.js
   });
 
     test('Navigate to Account Login page', async ({ page }) => {

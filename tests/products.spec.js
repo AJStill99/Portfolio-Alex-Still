@@ -7,7 +7,7 @@ test('Product actions demo', async ({ page }) => {
   // This will give the functions access to the Playwright page methods and properties.
   await page.goto('/collections/frontpage');
 
-  const allProducts = await products.captureProducts();
+  const allProducts = await products.captureProducts(); // Using custom component method
 
   console.log('Total products:', allProducts.length);
   expect(allProducts.length).toBeGreaterThan(0);
@@ -27,6 +27,8 @@ test('Product actions demo', async ({ page }) => {
       `Product ${index + 1}: ${product.title} - ${product.price}`
     );
   });
+
+  await products.consoleLogProducts(); // Log all captured products - for transparency
 
   expect(firstProduct.title).toBeTruthy();
 });
