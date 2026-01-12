@@ -67,7 +67,9 @@ Reusable test data is stored separately to keep tests clean and realistic:
 
 ## SQL Project
 
+I have also decided to create a small SQL project to focus on data validation and integrity checks that might happen in QA Engineering. 
+
 **Repository**: [SQL Project](https://github.com/AJStill99/alex-still-SQL-portfolio)
 
-- Using sqlite and DB Browser to visualise the database itself and run the queries included in this project
+Tools: Using sqlite and DB Browser to visualise the database itself and run the queries included in this project
 
