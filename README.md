@@ -73,3 +73,14 @@ I have also decided to create a small SQL project to focus on data validation an
 
 Tools: Using sqlite and DB Browser to visualise the database itself and run the queries included in this project
 
+## Postman Project
+
+I have created a project using Postman to test APIs on JSONPlaceholder: **https://jsonplaceholder.typicode.com**
+This project tests the basic requests; GET, POST, PUT, DELETE using this API, with positive and negative scenarios. 
+
+I used test cases within Postman's script functionality to validate the responses from the request
+
+**Repository**: [Postman Project](https://github.com/AJStill99/alex-stilll-postman-portfolio)
+
+Tools: Postman for sending requests and receiving responses from the API
+
